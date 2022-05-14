@@ -23,7 +23,7 @@ def create_app(config_name):
     # Creating the app configurations
     app.config.from_object(config_options[config_name])
 
-    #Initialzining flask packages
+    #Initialzining flask extensions
     login_manager.init_app(app)
     db.init_app(app)
     bootstrap.init_app(app)
