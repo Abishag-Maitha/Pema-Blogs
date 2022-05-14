@@ -15,7 +15,7 @@ flask-uploads = "*"
 flask-bootstrap = "*"
 psycopg2 = "*"
 gunicorn = "*"
-flask-script = "*"
+flask-script = "==2.0.5"
 python-dotenv = "*"
 
 [dev-packages]
