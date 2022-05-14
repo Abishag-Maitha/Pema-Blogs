@@ -16,6 +16,7 @@ flask-bootstrap = "*"
 psycopg2 = "*"
 gunicorn = "*"
 flask-script = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
