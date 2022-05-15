@@ -1,6 +1,6 @@
-{% extends 'base.html'%} {% block content %}
 <ul class="nav navbar-nav navbar-right">
     {% if current_user.is_authenticated %}
+    <li><a href="{{url_for('main.index')}}" class="d-block lo ms-3 me-3">Blogs</a></li>
     <li>
         <a class="quote-link" href="{{ url_for('main_blueprint.quotes') }}">Quotes</a>
     </li>
