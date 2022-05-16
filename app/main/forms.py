@@ -26,3 +26,7 @@ class Makepost(FlaskForm):
     title = StringField('Title',validators=[DataRequired()])
     content = TextAreaField('Blog Content',validators=[DataRequired()])
     submit = SubmitField('Post')
+
+class Comment_Form(FlaskForm):
+    content=TextAreaField("comment here", validators=[DataRequired()])
+    submit = SubmitField('Submit')

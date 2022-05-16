@@ -2,7 +2,7 @@ from flask_login import login_required,current_user
 from flask import flash, render_template,request,redirect,url_for,abort
 from . import main
 from ..models import User,Blog,Comment,Subscriber
-from .forms import UpdateProfile, Makepost
+from .forms import UpdateProfile, Makepost,Comment_Form
 from ..requests import get_quotes
 from .. import db #photos
 
@@ -46,7 +46,7 @@ def update_profile(uname):
     return render_template('profile/update.html',form =form)
 
 @main.route('/new_blog', methods=['POST','GET'])
-# @login_required
+@login_required
 def new_blog():
     subscribers = Subscriber.query.all()
     form = Makepost()
@@ -70,12 +70,16 @@ def blog(id):
 @main.route('/comment/<blog_id>', methods = ['Post','GET'])
 @login_required
 def comment(blog_id):
+    form=Comment_Form()
+    
     blog = Blog.query.get(blog_id)
-    comment =request.form.get('new_comment')
+    # comment =request.form.get('new_comment')
     user_id =  current_user._get_current_object().id
-    new_comment = Comment(comment=comment, user_id=user_id,blog_id=blog_id)
-    new_comment.save()
-    return redirect(url_for('main.blog',id = blog.id))
+    if form.validate_on_submit():
+        new_comment = Comment(comment=form.content.data, user_id=user_id,blog_id=blog_id)
+        new_comment.save()
+        return redirect(url_for('main.blog',id = blog.id))
+    return render_template("new_comments.html",form=form)
 
 @main.route('/subscribe',methods = ['POST','GET'])
 def subscribe():

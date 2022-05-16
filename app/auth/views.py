@@ -1,6 +1,6 @@
 from email.message import EmailMessage
 from flask import render_template,redirect,url_for, flash,request
-from flask_login import login_user,logout_user,login_required
+from flask_login import login_user,logout_user,login_required, current_user
 from . import auth
 from ..models import User
 from .forms import LoginForm,RegistrationForm
@@ -30,7 +30,7 @@ def login():
         if user is not None and user.verify_password(login_form.password.data):
             login_user(user,login_form.remember.data)
             next = request.args.get("next")
-        return redirect(url_for('main.index') or next )
+            return redirect(next or url_for('main.index'))
         flash('Invalid email address or Password.')  
     return render_template('auth/login.html', login_form = login_form)
 
