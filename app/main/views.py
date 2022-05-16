@@ -46,7 +46,7 @@ def update_profile(uname):
     return render_template('profile/update.html',form =form)
 
 @main.route('/new_blog', methods=['POST','GET'])
-@login_required
+# @login_required
 def new_blog():
     subscribers = Subscriber.query.all()
     form = Makepost()
@@ -73,7 +73,8 @@ def blog(id):
 def comment(blog_id):
     blog = Blog.query.get(blog_id)
     comment =request.form.get('new_comment')
-    new_comment = Comment(comment = comment, user_id = current_user._get_current_object().id, blog_id=blog_id)
+    user_id =  current_user._get_current_object().id
+    new_comment = Comment(comment=comment, user_id=user_id,blog_id=blog_id)
     new_comment.save()
     return redirect(url_for('main.blog',id = blog.id))
 

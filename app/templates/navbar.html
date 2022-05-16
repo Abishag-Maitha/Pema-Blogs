@@ -1,25 +1,21 @@
-<ul class="nav navbar-nav navbar-right navbar-warning">
-    {% if current_user.is_authenticated %}
-    <li><a href="{{url_for('main.index')}}" class="d-block lo ms-3 me-3">Blogs</a></li>
-    <li>
-        <a class="quote-link" href="{{ url_for('main.quotes') }}">Quotes</a>
-    </li>
-    <li>
-        <a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a>
-    </li>
-    <li>
-        <a href="{{url_for('auth.login')}}">Sign in</a>
-    </li>
+<nav class="navbar navbar-expand-lg navbar-light bg-info p-4">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Pema-Blogs</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse row" id="navbarNavAltMarkup">
+            <div class="navbar-nav col-md-8">
+                <a class="nav-link active" aria-current="page" href="{{url_for('main.index')}}">Blogs</a>
+                <a class="nav-link active" href="{{url_for('main.new_blog')}}">Post a blog</a>
+                <a class="nav-link active" href="{{ url_for('main.quotes') }}">Quotes</a>
+            </div>
+            <div class="navbar-nav col-md-4">
+                <a class="nav-link active" href="{{url_for('auth.login')}}">Login</a>
+                <a class="nav-link active" href="{{url_for('auth.sign_up')}}">Sign Up</a>
+                <a class="nav-link active" href="{{url_for('auth.logout')}}">Log Out</a>
+            </div>
 
-    <li>
-        <a href="{{url_for('auth.sign_up')}}">Sign Up</a>
-    </li>
-    <li>
-        <a href="{{url_for('main.new_blog')}}">Post a blog</a>
-    </li>
-
-    <li>
-        <a href="{{url_for('auth.logout')}}">Sign out</a>
-    </li>
-    {% endif %}
-</ul>
+        </div>
+    </div>
+</nav>
