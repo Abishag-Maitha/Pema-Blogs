@@ -2,18 +2,22 @@
     {% if current_user.is_authenticated %}
     <li><a href="{{url_for('main.index')}}" class="d-block lo ms-3 me-3">Blogs</a></li>
     <li>
-        <a class="quote-link" href="{{ url_for('main_blueprint.quotes') }}">Quotes</a>
+        <a class="quote-link" href="{{ url_for('main.quotes') }}">Quotes</a>
     </li>
     <li>
         <a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a>
     </li>
     <li>
-        <a href="{{url_for('auth.logout')}}">Sign out</a>
-    </li>
-    {% else %}
-    <li>
         <a href="{{url_for('auth.login')}}">Sign in</a>
     </li>
-    {%endif%}
+
+    <li>
+        <a href="{{url_for('auth.sign_up')}}">Sign Up</a>
+    </li>
+
+    {% else %}
+    <li>
+        <a href="{{url_for('auth.logout')}}">Sign out</a>
+    </li>
+    {% endif %}
 </ul>
-{% endblock %}

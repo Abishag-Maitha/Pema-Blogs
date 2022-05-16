@@ -18,6 +18,7 @@ gunicorn = "*"
 flask-script = "==2.0.5"
 python-dotenv = "*"
 requests = "*"
+email-validator = "*"
 
 [dev-packages]
 

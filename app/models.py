@@ -8,7 +8,6 @@ class User(db.Model, UserMixin):
     id=db.Column(db.Integer, primary_key=True)
     username=db.Column(db.String(255), unique=True, nullable=False)
     email=db.Column(db.String(255), unique=True, index = True, nullable=False)
-    # role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
 
     password_secure=db.Column(db.String(255), nullable=False)
     bio=db.Column(db.String(255))
@@ -27,10 +26,10 @@ class User(db.Model, UserMixin):
 
     @set_password.setter
     def password(self,password):
-        self.secure_password=generate_password_hash(password)
+        self.password_secure=generate_password_hash(password)
     
     def verify_password(self,password):
-        return check_password_hash(self.secure_password,password)
+        return check_password_hash(self.password_secure,password)
     
     def save_u(self):
         db.session.add(self)
@@ -43,16 +42,6 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f"User:{self.username}"
 
-# class Role(db.Model):
-#     __tablename__ = 'roles'
-
-#     id = db.Column(db.Integer,primary_key = True)
-#     name = db.Column(db.String(255))
-#     users = db.relationship('User',backref = 'role',lazy="dynamic")
-
-#     def __repr__(self):
-#         return f'User {self.name}'
-        
 
 class Blog(db.Model):
     __tablename__="blogs"

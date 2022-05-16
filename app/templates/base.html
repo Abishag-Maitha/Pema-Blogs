@@ -11,13 +11,13 @@
     <link rel="stylesheet" href="{{url_for('static',filename='CSS/styles.css')}}">
 
     <title>
-        {%block title%} {%endblock%}
+        {% block title %} {% endblock %}
     </title>
 
 </head>
 
 <body>
-    {% block navbar %} {% include 'navbar.html'%} {% endblock %} {% block content %} {% endblock %}
+    {% include 'navbar.html' %} {% block content %} {% endblock %}
 
     <script src="{{url_for('static', filename='JS/script.js')}}"></script>
 </body>

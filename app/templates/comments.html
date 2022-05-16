@@ -1,4 +1,4 @@
-{% extends 'base.html'%} {% import 'bootstrap/wtf.html' as wtf %} {% block content %}
+{% extends 'base.html' %} {% import 'bootstrap/wtf.html' as wtf %} {% block content %}
 <div class="container" id="allcomments">
     <div class="row">
         {% if all_comments %}
@@ -18,7 +18,7 @@
             {{wtf.quick_form(form)}}
         </div>
     </div>
-    {%else%}
+    {% else %}
     <div class="card w-90 mb-3">
         <div class="card-body">
             <p class="card-title">No Comments for this yet for this blog. Be the first to comment</p>
@@ -27,6 +27,6 @@
     <div class="col-md-5">
         {{wtf.quick_form(form)}}
     </div>
-    {%endif%}
+    {% endif %}
 </div>
-{% endblock%}
+{% endblock %}
