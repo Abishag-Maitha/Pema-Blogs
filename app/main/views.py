@@ -46,7 +46,7 @@ def update_profile(uname):
     return render_template('profile/update.html',form =form)
 
 @main.route('/new_blog', methods=['POST','GET'])
-@login_required
+# @login_required
 def new_blog():
     subscribers = Subscriber.query.all()
     form = Makepost()
