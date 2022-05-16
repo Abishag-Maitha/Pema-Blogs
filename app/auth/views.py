@@ -14,12 +14,12 @@ def sign_up():
         user=User.query.filter_by(username=form.username.data).first()
         if user is None:
             user = User(email = form.email.data, username = form.username.data,password = form.password.data)
-            db.session.add(user)
-            db.session.commit()
+            user.save_u()
+            
             return redirect(url_for('auth.login'))
         else:
             flash('That username is in use try a new one')
-    return render_template('auth/signup.html', registration_form=form)
+    return render_template('auth/sign_up.html', registration_form=form)
            
 
 @auth.route('/login',methods=['GET','POST'])
@@ -30,7 +30,7 @@ def login():
         if user is not None and user.verify_password(login_form.password.data):
             login_user(user,login_form.remember.data)
             next = request.args.get("next")
-        return redirect(next or url_for('main.index'))
+        return redirect(url_for('main.index') or next )
         flash('Invalid email address or Password.')  
     return render_template('auth/login.html', login_form = login_form)
 
