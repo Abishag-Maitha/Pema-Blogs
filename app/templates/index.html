@@ -1,7 +1,9 @@
 {% extends "base.html" %} {% import 'macros.html' as macro %} {% block title %} Pema-Blogs {% endblock %} {% block content %}
 <div class="container" id="particles-js">
 
-    <div><a id="cats" class="nav-link" data-toggle="tab" href="#all"><strong>Blogs</strong> </a></div>
+    <div>
+        <p class="blogs text-center">Posted Blogs</p>
+    </div>
 
     <div class="tab-content">
         <div class="container tab-pane active" id="all"><br> {{ macro.display(blogs) }}
