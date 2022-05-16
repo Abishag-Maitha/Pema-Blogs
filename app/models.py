@@ -52,15 +52,15 @@ class Blog(db.Model):
     post=db.Column(db.Text(), nullable=False)
     comment = db.relationship('Comment',backref='blog',lazy='dynamic')
      
-def save(self):
-    db.session.add(self)
-    db.session.commit()
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
 
-def delete(self):
+    def delete(self):
         db.session.delete(self)
         db.session.commit()
 
-def __repr__(self):
+    def __repr__(self):
         return f"Blog:{self.post}" 
 
 
@@ -71,18 +71,18 @@ class Comment(db.Model):
     blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'))
     comment = db.Column(db.Text(), nullable=False)
 
-def save(self):
-    db.session.add(self)
-    db.session.commit()
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
 
-@classmethod
-def get_comments(cls,id):
-    comments=Comment.query.filter_by(blog_id=id).all()
+    @classmethod
+    def get_comments(cls,id):
+        comments=Comment.query.filter_by(blog_id=id).all()
 
-    return comments
+        return comments
 
-def __repr__(self):
-    return f"Comment{self.comment}"
+    def __repr__(self):
+        return f"Comment{self.comment}"
 
 class Subscriber(db.Model):
     __tablename__='subscribers'

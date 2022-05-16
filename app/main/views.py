@@ -10,9 +10,9 @@ from .. import db #photos
 @main.route('/') #, methods=['GET','POST'])
 def index():
     title='Pema-Blogs'
-    # all_blogs=Blog.query.all()
+    all_blogs=Blog.query.all()
     
-    return render_template("index.html")
+    return render_template("index.html", blogs=all_blogs)
 
 @main.route('/quotes')
 def quotes():
@@ -52,9 +52,9 @@ def new_blog():
     form = Makepost()
     if form.validate_on_submit():
         title = form.title.data
-        content = form.content.data
         user_id =  current_user._get_current_object().id
-        blog = Blog(title=title,content=content,user_id=user_id)
+        blog = Blog(title=title,post=form.content.data, user_id=user_id)
+
         blog.save()
       
         return redirect(url_for('main.index'))

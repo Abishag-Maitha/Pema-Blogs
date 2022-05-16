@@ -1,4 +1,4 @@
-<ul class="nav navbar-nav navbar-right">
+<ul class="nav navbar-nav navbar-right navbar-warning">
     {% if current_user.is_authenticated %}
     <li><a href="{{url_for('main.index')}}" class="d-block lo ms-3 me-3">Blogs</a></li>
     <li>
@@ -14,8 +14,10 @@
     <li>
         <a href="{{url_for('auth.sign_up')}}">Sign Up</a>
     </li>
+    <li>
+        <a href="{{url_for('main.new_blog')}}">Post a blog</a>
+    </li>
 
-    {% else %}
     <li>
         <a href="{{url_for('auth.logout')}}">Sign out</a>
     </li>

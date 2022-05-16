@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% import "bootstrap/wtf.html" as wtf %} {% block content %}
 <div class="container">
-    {% include 'nav.html' %}
+
 </div>
 
 <div class="container-fluid row pt-3 mt-3">
@@ -11,7 +11,7 @@
         <div class="quote_detail mt-5">
             <p>{{quotes.quote}}</p>
         </div>
-        <div type="reset" class="btn float-end pt-4 mt-4"> <a class="quote-link" href="{{ url_for('main_blueprint.quotes') }}">View random quotes</a></div>
+        <div type="reset" class="btn float-end pt-4 mt-4"> <a class="quote-link" href="{{ url_for('main.quotes') }}">View random quotes</a></div>
     </div>
     <div class="col-md-3"></div>
 </div>
