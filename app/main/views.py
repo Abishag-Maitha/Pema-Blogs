@@ -67,7 +67,6 @@ def blog(id):
     return render_template('index.html',blog=blog,comments=comments)
 
 
-
 @main.route('/comment/<blog_id>', methods = ['Post','GET'])
 @login_required
 def comment(blog_id):
