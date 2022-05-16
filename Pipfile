@@ -17,6 +17,7 @@ psycopg2 = "*"
 gunicorn = "*"
 flask-script = "==2.0.5"
 python-dotenv = "*"
+requests = "*"
 
 [dev-packages]
 

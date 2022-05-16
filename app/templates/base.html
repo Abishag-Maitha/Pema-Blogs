@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    {% include 'navbar.html'%} {%block content%} {%endblock%}
+    {% block navbar %} {% include 'navbar.html'%} {% endblock %} {% block content %} {% endblock %}
 
     <script src="{{url_for('static', filename='JS/script.js')}}"></script>
 </body>

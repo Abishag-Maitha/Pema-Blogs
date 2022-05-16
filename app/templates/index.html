@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% import 'macros.html' as macro %} {% block content %} {% block title%}
-<title>Pema Blogs</title>
+<title>Pema-Blogs</title>
 {%endblock%} {% block content %}
 <div class="container" id="particles-js">
     {%include 'nav.html' %}
@@ -12,7 +12,6 @@
         <div class="container tab-pane active" id="all"><br> {{ macro.display(blogs) }}
         </div>
     </div>
-
 
     <div class="container-fluid">
         {% for message in get_flashed_messages() %}
